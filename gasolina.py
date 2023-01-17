@@ -1,7 +1,6 @@
 import pandas as pd
 import seaborn as sns
-import os
-from getpass import getpass 
+import matplotlib.pyplot as plt 
 
 %%writefile gasolina.csv
 dia,venda
@@ -22,6 +21,7 @@ data.head(11)
 preco_gasolina= data[['dia', 'venda']]
 
 with sns.axes_style('whitegrid'):
-  grafico= sns.lineplot(data=preco_gasolina, x='dia', y='venda', palette='pastel')
-  grafico.set(title='Preço da gasolina por dia', xlabel='Dia', ylabel='Preço da gasolina')
+  grafico= sns.lineplot(data=preco_gasolina, x='dia', y='venda', label= 'Média diária', palette='pastel', color= 'green')
+  grafico.set(title='Preço médio da gasolina por dia na cidade de São Paulo', xlabel='Dia', ylabel='Preço da gasolina')
   grafico.get_figure().savefig("gasolina.png")
+  grafico.figure.set_size_inches(w= 20/2.54, h=15/2.54)  
